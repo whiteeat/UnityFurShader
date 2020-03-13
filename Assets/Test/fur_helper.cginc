@@ -61,9 +61,7 @@ fixed4 frag_surface(v2f i): SV_Target
 
     fixed3 color = ambient + diffuse + specular;
     
-    // return fixed4(color, 1.0);
-    fixed3 textureColor = tex2D(_MainTex, i.uv.xy).rgb;
-    return fixed4(textureColor, 1.0);
+    return fixed4(color, 1.0);
 }
 
 fixed4 frag_base(v2f i): SV_Target
@@ -80,9 +78,6 @@ fixed4 frag_base(v2f i): SV_Target
 
     fixed3 color = ambient + diffuse + specular;
     fixed alpha = tex2D(_FurTex, i.uv.zw).rgb;
-
-    fixed3 textureColor = tex2D(_MainTex, i.uv.xy).rgb;
     
-    return fixed4(textureColor, alpha);
-    // return fixed4(textureColor, alpha);
+    return fixed4(color, alpha);
 }
